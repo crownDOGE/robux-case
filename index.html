@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobuxCase - Кейсы с Robux</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-gem"></i>
+                <span>RobuxCase</span>
+            </div>
+            <div class="user-panel">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+                    <span id="username">Username</span>
+                </div>
+                <div class="balance">
+                    <i class="fas fa-coins"></i>
+                    <span id="user-balance">0 Robux</span>
+                </div>
+                <button class="btn" id="deposit-btn">Пополнить</button>
+                <button class="btn btn-withdraw" id="withdraw-btn">Вывести</button>
+                <button class="btn btn-logout" id="logout-btn">Выйти</button>
+            </div>
+        </header>
+        
+        <div class="bot-instruction">
+            <h3 class="bot-title">Как пополнить баланс</h3>
+            <ol class="bot-steps">
+                <li>Создайте пасс в Roblox на 1 Robux (чтобы вы могли получить свой код)</li>
+                <li>Зайдите в плейс "Please donate"</li>
+                <li>Нажмите на иконку с подарком</li>
+                <li>В первую строку впишите: robux_caseTOP1</li>
+                <li>Во вторую строку впишите свой ник в Roblox</li>
+                <li>Нажмите "Gift"</li>
+                <li>Выберите пасс на ту сумму, на которую хотите пополнить</li>
+                <li>Купите этот пасс</li>
+                <li>Код придёт в течение 24 часов</li>
+            </ol>
+            <p style="text-align: center; color: #f72585; margin-top: 10px;">
+                <strong>ГЛАВНОЕ: ПРОВЕРЬТЕ, ЧТОБЫ У ВАС БЫЛ ПАСС НА 1 ROBUX</strong>
+            </p>
+            <p style="text-align: center; color: #f72585; margin-top: 5px;">
+                <strong>ВАШ КОД БУДЕТ В ПЛЕЙСЕ PLEASE DONATE В РАЗДЕЛЕ ПОДАРКИ</strong>
+            </p>
+            <button class="btn" id="bot-button" style="margin: 20px auto 0; display: block;">Получить код</button>
+        </div>
+        
+        <div class="cases-container">
+            <div class="case">
+                <div class="case-image case-starter">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3 class="case-title">Стартовый кейс</h3>
+                <p class="case-price">10 Robux</p>
+                <button class="btn open-case" data-price="10">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image case-basic">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <h3 class="case-title">Обычный кейс</h3>
+                <p class="case-price">50 Robux</p>
+                <button class="btn open-case" data-price="50">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image case-premium">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="case-title">Премиум кейс</h3>
+                <p class="case-price">100 Robux</p>
+                <button class="btn open-case" data-price="100">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image case-gold">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="case-title">Золотой кейс</h3>
+                <p class="case-price">200 Robux</p>
+                <button class="btn open-case" data-price="200">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image case-diamond">
+                    <i class="fas fa-diamond"></i>
+                </div>
+                <h3 class="case-title">Бриллиантовый кейс</h3>
+                <p class="case-price">500 Robux</p>
+                <button class="btn open-case" data-price="500">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image case-legendary">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="case-title">Легендарный кейс</h3>
+                <p class="case-price">1000 Robux</p>
+                <button class="btn open-case" data-price="1000">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image case-ultimate">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="case-title">Ультимейт кейс</h3>
+                <p class="case-price">2000 Robux</p>
+                <button class="btn open-case" data-price="2000">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image" style="background: linear-gradient(45deg, #00b4d8, #0077b6);">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="case-title">Эпический кейс</h3>
+                <p class="case-price">5000 Robux</p>
+                <button class="btn open-case" data-price="5000">Открыть</button>
+            </div>
+            
+            <div class="case">
+                <div class="case-image" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="case-title">Мифический кейс</h3>
+                <p class="case-price">10000 Robux</p>
+                <button class="btn open-case" data-price="10000">Открыть</button>
+            </div>
+        </div>
+        
+        <div class="history">
+            <h3 class="history-title">История игр</h3>
+            <div class="history-items" id="history-items">
+                <!-- История будет добавляться динамически -->
+            </div>
+        </div>
+        
+        <footer>
+            <p style="color: #f72585; font-weight: bold;">© 2025 RobuxCase. Все права защищены.</p>
+            <p style="font-size: 6px;">Это демонстрационный сайт. Все выигрыши виртуальны.</p>
+        </footer>
+    </div>
+    
+    <!-- Анимация открытия кейса -->
+    <div class="case-animation" id="case-animation">
+        <div class="animation-content">
+            <div class="case-reward" id="case-reward">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="reward-text" id="reward-text">Открываем кейс...</div>
+            <button class="btn" id="close-animation">Продолжить</button>
+        </div>
+    </div>
+    
+    <!-- Модальное окно пополнения -->
+    <div class="deposit-modal" id="deposit-modal">
+        <div class="deposit-content">
+            <span class="close">&times;</span>
+            <h2>Пополнение баланса</h2>
+            <p>Выберите сумму пополнения:</p>
+            
+            <div class="deposit-options">
+                <div class="deposit-option" data-amount="10">10 Robux</div>
+                <div class="deposit-option" data-amount="50">50 Robux</div>
+                <div class="deposit-option" data-amount="100">100 Robux</div>
+                <div class="deposit-option" data-amount="500">500 Robux</div>
+                <div class="deposit-option" data-amount="1000">1000 Robux</div>
+                <div class="deposit-option" data-amount="2000">2000 Robux</div>
+                <div class="deposit-option" data-amount="5000">5000 Robux</div>
+                <div class="deposit-option" data-amount="10000">10000 Robux</div>
+            </div>
+            
+            <button class="btn" id="confirm-deposit" style="margin-top: 20px;">Подтвердить</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно вывода -->
+    <div class="withdraw-modal" id="withdraw-modal">
+        <div class="withdraw-content">
+            <span class="close">&times;</span>
+            <h2>Вывод средств</h2>
+            <p>Доступно для вывода: <span id="available-balance">0</span> Robux</p>
+            
+            <div class="form-group">
+                <label for="withdraw-amount">Сумма вывода:</label>
+                <input type="number" id="withdraw-amount" min="30" placeholder="Минимум 30 Robux">
+            </div>
+            
+            <div class="form-group">
+                <label for="roblox-username">Имя пользователя Roblox:</label>
+                <input type="text" id="roblox-username" placeholder="Введите ваш никнейм Roblox">
+            </div>
+            
+            <p>Средства будут переведены в течение 24 часов</p>
+            <button class="btn" id="confirm-withdraw" style="margin-top: 10px;">Заказать вывод</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для ввода кода -->
+    <div class="code-modal" id="code-modal">
+        <div class="code-content">
+            <span class="close">&times;</span>
+            <h2>Введите код пополнения</h2>
+            <p>который прислали вам в плейсе "Please donate" в разделе GIFT</p>
+            
+            <input type="text" class="code-input" id="code-input" placeholder="Введите код здесь" maxlength="11">
+            <div class="code-error" id="code-error">Неверный код. Пожалуйста, проверьте и попробуйте снова.</div>
+            
+            <button class="btn" id="confirm-code" style="margin-top: 10px;">Подтвердить код</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
