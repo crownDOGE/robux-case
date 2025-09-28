@@ -58,6 +58,13 @@ function initPage() {
     
     currentUser = JSON.parse(userData);
     
+    // Инициализируем массив использованных кодов, если его нет
+    if (!currentUser.usedCodes) {
+        currentUser.usedCodes = [];
+        // Сохраняем обновленные данные пользователя
+        updateUserData();
+    }
+    
     // Обновляем информацию о пользователе
     userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
     usernameElement.textContent = currentUser.username;
@@ -65,6 +72,19 @@ function initPage() {
     
     // Загружаем историю игр
     loadHistory();
+}
+
+// Обновление данных пользователя в localStorage
+function updateUserData() {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const userIndex = users.findIndex(u => u.email === currentUser.email);
+    
+    if (userIndex !== -1) {
+        users[userIndex] = currentUser;
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
 }
 
 // Загрузка истории игр
@@ -116,14 +136,7 @@ function updateBalance(amount) {
     userBalance.textContent = `${currentUser.balance} Robux`;
     
     // Сохраняем обновленные данные пользователя
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const userIndex = users.findIndex(u => u.email === currentUser.email);
-    
-    if (userIndex !== -1) {
-        users[userIndex] = currentUser;
-        localStorage.setItem('users', JSON.stringify(users));
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    }
+    updateUserData();
 }
 
 // Выход из системы
@@ -190,8 +203,19 @@ confirmCodeBtn.addEventListener('click', () => {
     
     // Проверяем код
     if (validCodes.includes(enteredCode)) {
-        // Код верный, пополняем баланс
+        // Проверяем, не использовался ли код ранее
+        if (currentUser.usedCodes.includes(enteredCode)) {
+            codeError.textContent = 'Этот код уже был использован!';
+            codeError.style.display = 'block';
+            return;
+        }
+        
+        // Код верный и не использовался, пополняем баланс
         updateBalance(selectedDepositAmount);
+        
+        // Добавляем код в список использованных
+        currentUser.usedCodes.push(enteredCode);
+        updateUserData();
         
         // Сохраняем в историю транзакций
         saveHistory(`Пополнение баланса`, selectedDepositAmount, true);
@@ -208,6 +232,7 @@ confirmCodeBtn.addEventListener('click', () => {
         alert(`Баланс успешно пополнен на ${selectedDepositAmount} Robux!`);
     } else {
         // Неверный код
+        codeError.textContent = 'Неверный код. Пожалуйста, проверьте и попробуйте снова.';
         codeError.style.display = 'block';
     }
 });
@@ -356,7 +381,7 @@ closeAnimationBtn.addEventListener('click', () => {
 
 // Кнопка "Получить код"
 botButton.addEventListener('click', () => {
-alert('Инструкция по получению кода:\n\n1. Создайте пасс в Roblox на 1 Robux\n2. Зайдите в плейс "Please donate"\n3. Нажмите на иконку с подарком\n4. В первую строку впишите: Robux_caseTop\n5. Во вторую строку впишите свой ник в Roblox\n6. Нажмите "Gift"\n7. Выберите пасс на нужную сумму\n8. Купите пасс\n9. Код придёт в течение 24 часов');
+    alert('Инструкция по получению кода:\n\n1. Создайте пасс в Roblox на 1 Robux\n2. Зайдите в плейс "Please donate"\n3. Нажмите на иконку с подарком\n4. В первую строку впишите: Robux_caseTop\n5. Во вторую строку впишите свой ник в Roblox\n6. Нажмите "Gift"\n7. Выберите пасс на нужную сумму\n8. Купите пасс\n9. Код придёт в течение 24 часов');
 });
 
 // Закрытие модальных окон при клике вне их
