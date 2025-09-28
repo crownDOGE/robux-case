@@ -217,8 +217,8 @@ confirmWithdrawBtn.addEventListener('click', () => {
     const amount = parseInt(withdrawAmountInput.value);
     const username = robloxUsernameInput.value.trim();
     
-    if (!amount || amount < 100) {
-        alert('Минимальная сумма вывода - 100 Robux');
+    if (!amount || amount < 30) {
+        alert('Минимальная сумма вывода - 30 Robux');
         return;
     }
     
