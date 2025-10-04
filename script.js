@@ -318,15 +318,14 @@ function showCaseAnimation() {
         saveHistory(`Открытие кейса за ${currentCasePrice} Robux`, win ? winAmount : currentCasePrice, win);
     }, 2000);
 }
-
 // Расчет выигрыша
 function calculateWinAmount(price) {
     // Вероятности выигрыша зависят от цены кейса
     const winChance = Math.random() * 100;
     
     if (price === 10) {
-        // Стартовый кейс: 70% шанс выиграть
-        if (winChance < 70) {
+        // Стартовый кейс: 40% шанс выиграть (было 70%)
+        if (winChance < 15) {
             return Math.floor(price * (1 + Math.random() * 2)); // 1x-3x
         }
     } else if (price === 50) {
